@@ -13,18 +13,17 @@ A backend platform for vehicle rentals, built as **1 Eureka Server + 7 independe
 ## 📌 Table of Contents
 
 1. [Overview](#-overview)
-2. [Architecture](#-architecture)
-3. [Tech Stack](#-tech-stack)
-4. [Services](#-services)
-5. [Inter-Service Communication Matrix](#-inter-service-communication-matrix)
-6. [Business Rules & Validation](#-business-rules--validation)
-7. [REST API Reference](#-rest-api-reference)
-8. [Getting Started](#-getting-started)
-9. [Demo Walkthrough](#-demo-walkthrough)
-10. [Project Structure](#-project-structure)
-11. [Future Features](#-future-features)
-12. [Contributing](#-contributing)
-13. [Author](#-author)
+2. [Tech Stack](#-tech-stack)
+3. [Services](#-services)
+4. [Inter-Service Communication Matrix](#-inter-service-communication-matrix)
+5. [Business Rules & Validation](#-business-rules--validation)
+6. [REST API Reference](#-rest-api-reference)
+7. [Getting Started](#-getting-started)
+8. [Demo Walkthrough](#-demo-walkthrough)
+9. [Project Structure](#-project-structure)
+10. [Future Features](#-future-features)
+11. [Contributing](#-contributing)
+12. [Author](#-author)
 
 ---
 
@@ -38,39 +37,6 @@ A vehicle rental platform has to manage **customers, vehicles, drivers, bookings
 - A service **never accesses another service's database**. It calls the other service's REST API through OpenFeign.
 - Services **discover each other via Eureka**, so no fixed IPs or ports.
 - If a downstream service is unavailable, the caller returns a clear, meaningful error instead of pretending it got data.
-
----
-
-## 🏗 Architecture
-
-```
-                         ┌─────────────────┐
-                         │  eureka-server  │
-                         └────────┬────────┘
-        ┌───────────┬───────────┬─┴─────────┬────────────┬───────────┐
-        ▼           ▼           ▼           ▼            ▼           ▼
-   customer-    vehicle-     driver-     booking-     payment-     trip-      feedback-
-    service      service     service      service      service    service      service
-```
-
-**Service-to-service call flow (OpenFeign + Eureka)**
-
-```
-Calling Service ──(OpenFeign)──► Target Service Name ──(Eureka lookup)──► Available Instance
-```
-
-**Registered services**
-
-| # | Application | Type |
-|---|---|---|
-| 1 | `eureka-server` | Infrastructure |
-| 2 | `customer-service` | Business |
-| 3 | `vehicle-service` | Business |
-| 4 | `driver-service` | Business |
-| 5 | `booking-service` | Business |
-| 6 | `payment-service` | Business |
-| 7 | `trip-service` | Business |
-| 8 | `feedback-service` | Business |
 
 ---
 
