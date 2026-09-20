@@ -22,8 +22,6 @@ A backend platform for vehicle rentals, built as **1 Eureka Server + 7 independe
 8. [Demo Walkthrough](#-demo-walkthrough)
 9. [Project Structure](#-project-structure)
 10. [Future Features](#-future-features)
-11. [Contributing](#-contributing)
-12. [Author](#-author)
 
 ---
 
@@ -157,8 +155,8 @@ The same pattern applies to `/vehicles`, `/drivers`, `/bookings`, `/payments`, `
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/vehicle-rental-microservices.git
-cd vehicle-rental-microservices
+git clone https://github.com/Arpan-Patel-source/rentwheels-microservices.git
+cd rentwheels-microservices
 ```
 
 ### 2. Create the databases
@@ -242,7 +240,6 @@ src/main/java/com/<org>/<service>/
 ├── entity/
 ├── dto/
 ├── client/        # Feign clients
-├── exception/     # Custom exceptions + global handler
 └── config/
 ```
 
